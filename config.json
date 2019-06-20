@@ -1,0 +1,9 @@
+{
+  "token": "changeme",
+  "db": {
+    "host": "dbhost",
+    "user": "dbuser",
+    "password": "dbpassword",
+    "database": "db"
+  }
+}
