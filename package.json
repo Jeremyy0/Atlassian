@@ -1,0 +1,11 @@
+{
+  "name": "Atlassian",
+  "version": "0.0.1",
+  "description": "Atlas Resource Location Bot",
+  "main": "bot.js",
+  "author": "I Like buttcheese",
+  "dependencies": {
+    "discord.io": "^2.5.3",
+    "winston": "^3.2.1"
+  }
+}
