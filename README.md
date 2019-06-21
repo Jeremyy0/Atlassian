@@ -3,13 +3,13 @@
 This bot was developed as a means for tracking resource locations for the game atlas through discord.
 
 Commands:  
-To Remove: !del <tile> <resource1>,<resource2>  
-To Add:    !add <tile> <resource2>,<resource1>  
+To Remove: !del \<tile\> \<resource1\>,\<resource2\>  
+To Add:    !add \<tile\> \<resource2\>,\<resource1\>  
 
 To query:
-  * !find <resource>
-  * !whatson <tile>
-  * !map <tile>
+  * !find \<resource\>
+  * !whatson \<tile\>
+  * !map \<tile\>
   * !darius - Just a command that posts random giphy "ew" images as a joke. 
   * !ping - sample/test code found online when i was first making bot..... Left as a reminder to never forget where I began with the bot.
 
