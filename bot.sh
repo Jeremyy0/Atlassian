@@ -1,6 +1,5 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 cd "$( dirname "${BASH_SOURCE[0]}" )"
 npm install discord.io winston mysql -save
 npm install https://github.com/woor/discord.io/tarball/gateway_v6
