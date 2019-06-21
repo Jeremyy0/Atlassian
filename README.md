@@ -8,7 +8,7 @@ Commands:
   * !whatson  
   * !find  
   * !map  
-  * !darius  
+  * !darius - Just a command that posts random giphy "ew" images as a joke. 
 
 
 Copyright (c) the respective contributors, as shown by the AUTHORS file.
