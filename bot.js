@@ -14,7 +14,7 @@ var mysql = require('mysql');
 var con = mysql.createConnection(config.db);
 con.connect(function(err) {
   if (err) throw err;
-  console.log("Connected!");
+  console.log("DB Connected!");
 });
 
 
