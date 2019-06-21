@@ -3,8 +3,8 @@
 This bot was developed as a means for tracking resource locations for the game atlas through discord.
 
 Commands:  
-To Remove: !del <tile> <resource1>,<resource2>
-To Add:    !add <tile> <resource2>,<resource1>
+To Remove: !del <tile> <resource1>,<resource2>  
+To Add:    !add <tile> <resource2>,<resource1>  
 
 To query:
   * !find <resource>
