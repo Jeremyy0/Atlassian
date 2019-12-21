@@ -1,6 +1,10 @@
 var Discord = require('discord.io');
 var logger = require('winston');
 var config = require('./config.json');
+
+const Discord = require('discord.js');
+const commando = require('discord.js-commando');
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -112,7 +116,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 //New Command Development
   if(cmd === "trigger") {
-    if (userID.hasPermission('MANAGE_PERMISSIONS', false, false)) {  
+    if (member.hasPermission('MANAGE_PERMISSIONS', false, false)) {  
       bot.sendMessage({to: channelID,message: "yeet"});;
     }
   }
