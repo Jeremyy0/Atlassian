@@ -2,7 +2,7 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var config = require('./config.json');
 
-const Discord = require('discord.js');
+const DiscordJS = require('discord.js');
 const commando = require('discord.js-commando');
 
 // Configure logger settings
