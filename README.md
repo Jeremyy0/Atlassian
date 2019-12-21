@@ -8,6 +8,7 @@ To Add:    !add \<tile\> \<resource2\>,\<resource1\>
 
 To query:
   * !find \<resource\>
+  * !whereis \<resource\>
   * !whatson \<tile\>
   * !map \<tile\>
   * !darius - Just a command that posts random giphy "ew" images as a joke. 
