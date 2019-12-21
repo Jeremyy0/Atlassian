@@ -116,7 +116,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 //New Command Development
   if(cmd === "trigger") {
-    if (message.member.hasPermission("ADMINISTRATOR")) {  
+    if (message.user.hasPermission("ADMINISTRATOR")) {  
       bot.sendMessage({to: channelID,message: "yeet"});;
     }
   }
