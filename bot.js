@@ -112,7 +112,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 //New Command Development
   if(cmd === "trigger") {
-    if (member.hasPermission('MANAGE_PERMISSIONS', false, false)) {  
+    if (userID.hasPermission('MANAGE_PERMISSIONS', false, false)) {  
       if (!args[0]) {
         bot.sendMessage({to: channelID,message: "\`\`\`Well shave me belly with a rusty razor! Ye didn\'t provide enough arguments. Stop failing so hard.\`\`\`"});;
         return false;
