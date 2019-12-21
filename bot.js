@@ -3,7 +3,7 @@ var logger = require('winston');
 var config = require('./config.json');
 
 const DiscordJS = require('discord.js');
-const commando = require('discord.js-commando');
+//const commando = require('discord.js-commando');
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
