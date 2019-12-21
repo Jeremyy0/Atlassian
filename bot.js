@@ -110,7 +110,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   bot.sendMessage({to: channelID,message: "https://game-maps.com/ATLAS/img/big/Atlas-Region-"+args[0].toUpperCase()+".jpg"});;
   }
 
-
+//New Command Development
+  if(cmd === "trigger") {
+    if (member.hasPermission('MANAGE_PERMISSIONS', false, false)) {  
+      if (!args[0]) {
+        bot.sendMessage({to: channelID,message: "\`\`\`Well shave me belly with a rusty razor! Ye didn\'t provide enough arguments. Stop failing so hard.\`\`\`"});;
+        return false;
+      }
+    bot.sendMessage({to: channelID,message: "yeet"});;
+  }
+}
 //Darius
   if(cmd === "darius") {
     var myArray = [
