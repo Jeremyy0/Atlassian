@@ -65,7 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
   //List resources within a tile
   if(cmd === "whatson") {
-    con.query("select GROUP_CONCAT('   ', locations.resource, ' (',type,')' separator '\n') as res from locations left join (resources) on locations.resource = resources.resource where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+    con.query("select GROUP_CONCAT(distinct '   ', locations.resource, ' (',type,')' separator '\n') as res from locations left join (resources) on locations.resource = resources.resource where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`"});;
        if (result[0]) { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" contains the following: \n" + result[0].res+"\`\`\`"});  } else { bot.sendMessage({to: channelID,message: "\`\`\`I don\'t know what resources are in "+args[0]+"\`\`\`"});; }
     });
