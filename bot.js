@@ -58,17 +58,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   //Search resource tile locations
   if(cmd === "find" || cmd === "whereis") {
     con.query("select tiles from (SELECT resource, GROUP_CONCAT(distinct tile separator ', ') as tiles from locations group by resource) as T where resource=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
-    var found = false;
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
       if (result[0]) {
         bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"});
-        found = true;
+        var found = true;
       }
     });
 
     con.query("select tiles from (SELECT animal, GROUP_CONCAT(distinct tile separator ', ') as tiles from animals group by animal) as T where animal=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
-      if (result[0] && !(found)) {
+      if (result[0] && (typeof found === 'undefined')) {
         bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"}); } else { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
       }
     });
