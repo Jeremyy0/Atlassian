@@ -85,7 +85,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     });
   }
 
-
+  //List resources within a tile
+  if(cmd === "animals") {
+    con.query("select GROUP_CONCAT(distinct '   ', animals.animal, ' (',stance,')' separator '\n') as res from animals left join (animaltypes) on animals.animal = animaltypes.animal where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+    if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`"});;
+       if (result[0]) { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" contains the following: \n" + result[0].res+"\`\`\`"});  } else { bot.sendMessage({to: channelID,message: "\`\`\`I don\'t know what resources are in "+args[0]+"\`\`\`"});; }
+    });
+  }
 
   //add tile resources
   if(cmd === "add") {
