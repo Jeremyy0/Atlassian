@@ -66,9 +66,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
           if (result[0]) {
             bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"}); } else { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
-          }      
+          }
         }
-      }
+      });
     });
   }
 
