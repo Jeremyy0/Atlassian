@@ -72,9 +72,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
               bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"});
               break;
             } else {
-              bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
-              break;
-            });
+                bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
+                break;
+            }
+        });
     } while(true)
   }
 
