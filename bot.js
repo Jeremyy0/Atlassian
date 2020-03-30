@@ -57,11 +57,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
   //Search resource tile locations
   if(cmd === "find" || cmd === "whereis") {
+    var found;
     con.query("select tiles from (SELECT resource, GROUP_CONCAT(distinct tile separator ', ') as tiles from locations group by resource) as T where resource=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
       if (result[0]) {
         bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"});
-        var found = "true";
+        found = "true";
       }
     });
 
