@@ -59,7 +59,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   if(cmd === "find" || cmd === "whereis") {
     con.query("select tiles from (SELECT resource, GROUP_CONCAT(distinct tile separator ', ') as tiles from locations group by resource) as T where resource=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
-      if (result[0]) { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"}); } else { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});; }
+      if (result[0]) {
+        bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"}); } else { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
+      } else {
+        con.query("select tiles from (SELECT animal, GROUP_CONCAT(distinct tile separator ', ') as tiles from animals group by animal) as T where animal=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+        if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`"});;
+          if (result[0]) {
+            bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`"}); } else { bot.sendMessage({to: channelID,message: "\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`"});;
+          }      
+        }
+      }
     });
   }
 
@@ -81,7 +90,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     }
     let addRes = args[1].split(',');
     let tile = args[0].toLowerCase();
-    for(var resrc of addRes) {    
+    for(var resrc of addRes) {
       con.query("INSERT INTO \`locations\` (tile, resource) VALUES (\'"+[args[0].toLowerCase()]+"\', \'"+resrc.toLowerCase()+"\')", function (err, result) {
         if (err) bot.sendMessage({to: channelID,message: "\`\`\`No quarter! Thar was an error adding "+resrc.toLowerCase()+" to "+args[0].toLowerCase()+". Try again or contact yar admin.\`\`\`"});;
       });
@@ -116,7 +125,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 //New Command Development
   if(cmd === "trigger") {
-    if (message.user.hasPermission("ADMINISTRATOR")) {  
+    if (message.user.hasPermission("ADMINISTRATOR")) {
       bot.sendMessage({to: channelID,message: "yeet"});;
     }
   }
