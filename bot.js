@@ -97,7 +97,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   if(cmd === "islands") {
     con.query("select name from islands where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
     if (err) bot.sendMessage({to: channelID,message: "\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`"});;
-       if (result[0]) { bot.sendMessage({to: channelID,message: "\`\`\`The following islands are in "+args[0]+": \n" + result[0]+"\`\`\`"});  } else { bot.sendMessage({to: channelID,message: "\`\`\`I don\'t know what islands are in "+args[0]+"\`\`\`"});; }
+       if (result[0]) { bot.sendMessage({to: channelID,message: "\`\`\`The following islands are in "+args[0]+": \n" + result[0].name+"\`\`\`"});  } else { bot.sendMessage({to: channelID,message: "\`\`\`I don\'t know what islands are in "+args[0]+"\`\`\`"});; }
     });
   }
 
