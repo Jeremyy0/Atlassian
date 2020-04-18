@@ -14,9 +14,10 @@ client.on('ready', () => {
 
 
 client.on('message', msg => {
-  var prefix = '!';
-  if (config.hasOwnProperty('prefixOverride')) {
-    prefix = config.prefixOverride;
+  if (config.prefixOverride) {
+    var prefix = config.prefixOverride;
+  } else {
+    var prefix = '!';
   }
   if (msg.content.substring(0, 1) == prefix) {
     var args = msg.content.substring(1).split(' ');
