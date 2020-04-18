@@ -55,6 +55,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     bot.sendMessage({to: channelID,message: 'Pong!'});
   }
 
+  if(cmd === "main") {
+    // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
+    // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
+    bot.sendMessage({to: channelID,message: 'demo deploy!'});
+  }
+
   //Search resource tile locations
   if(cmd === "find" || cmd === "whereis") {
     var found = false;
