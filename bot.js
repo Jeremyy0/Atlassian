@@ -42,6 +42,7 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 bot.on('message', function (user, userID, channelID, message, evt) {
+  bot.sendMessage({to: channelID,message: " " + user " " + userID + " " + message});
   // Our bot needs to know if it will execute a command
   // It will listen for messages that will start with `!`
   if (message.substring(0, 1) == '!') {
@@ -58,7 +59,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   if(cmd === "testing") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    bot.sendMessage({to: channelID,message: " " + user " " + userID + " " + message});
     if(message.member.hasPermission("ADMINISTRATOR")) {
       bot.sendMessage({to: channelID,message: 'Testing!'});
     }
