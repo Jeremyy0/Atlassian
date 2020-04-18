@@ -51,7 +51,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     args = args.splice(1);
   }
 
-  bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+message+"\`\`\`"});
+  bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+userID+" "+message+"\`\`\`"});
   if(cmd === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
@@ -61,7 +61,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   if(cmd === "testing") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    if(message.member.hasPermission("ADMINISTRATOR")) {
+    if(user.hasPermission("ADMINISTRATOR")) {
       bot.sendMessage({to: channelID,message: 'Testing!'});
     }
   }
