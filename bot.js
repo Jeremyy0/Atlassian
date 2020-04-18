@@ -13,7 +13,10 @@ client.on('message', msg => {
     msg.reply('Pong!');
   }
   if (msg.content === 'test') {
-    msg.reply('Pong!');
+    if(msg.member.hasPermission("ADMINISTRATOR")) {
+      msg.channel.send('Success!');
+
+    }
   }
 });
 
