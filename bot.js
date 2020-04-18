@@ -72,6 +72,43 @@ client.on('message', msg => {
          if (result[0]) { msg.channel.send("\`\`\`The following islands are in "+args[0]+": \n" + result[0].res+"\`\`\`");  } else { msg.channel.send("\`\`\`I don\'t know what islands are in "+args[0]+"\`\`\`");; }
       });
     }
+    //show a tile map
+    if(cmd === "map") {
+      if (!args[0]) {
+        msg.channel.send("\`\`\`Well shave me belly with a rusty razor! Ye didn\'t provide enough arguments. Stop failing so hard.\`\`\`");;
+        return false;
+      }
+    msg.channel.send("https://game-maps.com/ATLAS/img/big/Atlas-Region-"+args[0].toUpperCase()+".jpg");;
+    }
+
+    //add tile resources
+    if(cmd === "add") {
+      if (!args[0] || ! args[1]) {
+        msg.channel.send("\`\`\`excel\n \'Well shave me belly with a rusty razor! Ye did not provide enough arguments. Stop failing so hard.\'\`\`\`");;
+        return false;
+      }
+      let addRes = args[1].split(',');
+      let tile = args[0].toLowerCase();
+      for(var resrc of addRes) {
+        con.query("INSERT INTO \`locations\` (tile, resource) VALUES (\'"+[args[0].toLowerCase()]+"\', \'"+resrc.toLowerCase()+"\')", function (err, result) {
+          if (err) msg.channel.send("\`\`\`No quarter! Thar was an error adding "+resrc.toLowerCase()+" to "+args[0].toLowerCase()+". Try again or contact yar admin.\`\`\`");;
+        });
+      }
+    }
+    //del tile resource
+    if(cmd === "del") {
+      if (!args[0] || ! args[1]) {
+        msg.channel.send("\`\`\`Well shave me belly with a rusty razor! Ye didn\'t provide enough arguments. Stop failing so hard.\`\`\`");;
+        return false;
+      }
+      let delRes = args[1].split(',');
+      let tile = args[0].toLowerCase();
+      for(var resrc of delRes) {
+        con.query("delete from \`locations\` where (resource=\'"+[resrc.toLowerCase()]+"\' and tile=\'"+tile+"\')", function (err, result) {
+          if (err) msg.channel.send("\`\`\`No quarter! Thar was an error removing "+resrc.toLowerCase()+" from "+args[0].toLowerCase()+". Try again or contact yar admin.\`\`\`");;
+        });
+      }
+    }
 
   }
 });
