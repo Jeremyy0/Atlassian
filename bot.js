@@ -47,9 +47,7 @@ client.on('message', msg => {
             if (result[0]) {
               msg.channel.send("\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`");
             if (!(found)) {
-              } else {
                 msg.channel.send("\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`");
-              }
             }
         });
     }
