@@ -9,10 +9,11 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
+  var prefix = '!';
+  if (msg.content === prefix+'ping') {
     msg.reply('Pong!');
   }
-  if (msg.content === 'test') {
+  if (msg.content === prefix+'test') {
     if(msg.member.hasPermission("ADMINISTRATOR")) {
       msg.channel.send('Success!');
 
