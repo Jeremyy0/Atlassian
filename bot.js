@@ -8,16 +8,16 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("DB Connected!");
 });
-
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+
 client.on('message', msg => {
   if (config.prefixOverride) {
     var prefix = config.prefixOverride;
-  }  else { 
-    var prefix = '.';
+  }  else {
+    var prefix = '!';
   }
   if (msg.content.substring(0, 1) == prefix) {
     var args = msg.content.substring(1).split(' ');
