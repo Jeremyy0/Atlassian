@@ -37,10 +37,10 @@ client.on('message', msg => {
         con.query("select tiles from (SELECT animal, GROUP_CONCAT(distinct tile separator ', ') as tiles from animals group by animal) as T where animal=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
           if (err) msg.channel.send("\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`");;
             if (result[0]) {
-              msg.channel.send({"\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`");
+              msg.channel.send("\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`");
             if (!(found)) {
               } else {
-                msg.channel.send({"\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`");;
+                msg.channel.send("\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`");
               }
             }
         });
