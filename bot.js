@@ -35,7 +35,7 @@ client.on('message', msg => {
 
     //Print Available commands
     if (cmd === 'commands') {
-      msg.channel.send("Atlassian Bot Commands\n(Currently not working.) To Remove: !del <tile> <resource1>,<resource2>\n(Currently not working.) To Add: !add <tile> <resource2>,<resource1>\n\nTo query:\n!find <resource>\n!whatson <tile>\n!animals <tile>\n!map <tile>\n!ping - sample/test code found online when I was first making bot..... Left as a reminder to never forget where I began with the bot.");
+      msg.channel.send("Atlassian Bot Commands\n(Currently not working.) To Remove: "+prefix+"del <tile> <resource1>,<resource2>\n(Currently not working.) To Add: "+prefix+"add <tile> <resource2>,<resource1>\n\nTo query:\n"+prefix+"find <resource>\n"+prefix+"whatson <tile>\n"+prefix+"animals <tile>\n"+prefix+"islands <tile>"+prefix+"map <tile>\n"+prefix+"ping - original test command..... Left as a reminder to never forget where I began with the bot.");
     }
     //Search resource tile locations
     if(cmd === 'find' || cmd === prefix+'whereis') {
