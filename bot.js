@@ -5,7 +5,7 @@ var config = require('./config.json');
 
 const DiscordJS = require('discord.js');
 //const commando = require('discord.js-commando');
-const client = new Discord.Client();
+const bot = new Discord.Client();
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -30,9 +30,9 @@ con.connect(function(err) {
 //   autorun: true
 //});
 
-client.login(config.token);
+bot.login(config.token);
 
-client.on('ready', () => {
+bot.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
