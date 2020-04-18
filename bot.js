@@ -46,8 +46,10 @@ client.on('message', msg => {
           if (err) msg.channel.send("\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`");;
             if (result[0]) {
               msg.channel.send("\`\`\`"+args[0]+" can be found in the following tiles: " + result[0].tiles+"\`\`\`");
-            if (!(found)) {
+            } else {
+              if (!(found)) {
                 msg.channel.send("\`\`\`"+args[0]+"\'s locations are not known to me.\`\`\`");
+              }
             }
         });
     }
