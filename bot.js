@@ -1,9 +1,6 @@
-//var Discord = require('discord.io');
 var config = require('./config.json');
-
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
 // Initialize Database
 var mysql = require('mysql');
 var con = mysql.createConnection(config.db);
@@ -53,9 +50,30 @@ client.on('message', msg => {
             }
         });
     }
+
+    //List resources within a tile
+    if(cmd === "whatson") {
+      con.query("select GROUP_CONCAT(distinct '   ', locations.resource, ' (',type,')' separator '\n') as res from locations left join (resources) on locations.resource = resources.resource where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+      if (err) msg.channel.send("\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`");;
+         if (result[0]) { msg.channel.send("\`\`\`"+args[0]+" contains the following: \n" + result[0].res+"\`\`\`");  } else { msg.channel.send("\`\`\`I don\'t know what resources are in "+args[0]+"\`\`\`");; }
+      });
+    }
+    //List animals within a tile
+    if(cmd === "animals") {
+      con.query("select GROUP_CONCAT(distinct '   ', animals.animal, ' (',stance,')' separator '\n') as res from animals left join (animaltypes) on animals.animal = animaltypes.animal where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+      if (err) msg.channel.send("\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`");;
+         if (result[0]) { msg.channel.send("\`\`\`"+args[0]+" contains the following: \n" + result[0].res+"\`\`\`");  } else { msg.channel.send("\`\`\`I don\'t know what resources are in "+args[0]+"\`\`\`");; }
+      });
+    }
+    //List islands within a tile
+    if(cmd === "islands") {
+      con.query("select GROUP_CONCAT('   ', islands.name separator '\n') as res from islands where tile =\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
+      if (err) msg.channel.send("\`\`\`Ahoy! Thar's an error with yer command fix yer syntax and try again.\`\`\`");;
+         if (result[0]) { msg.channel.send("\`\`\`The following islands are in "+args[0]+": \n" + result[0].res+"\`\`\`");  } else { msg.channel.send("\`\`\`I don\'t know what islands are in "+args[0]+"\`\`\`");; }
+      });
+    }
+
   }
 });
-
-client.login('token');
 
 client.login(config.token);
