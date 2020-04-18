@@ -1,9 +1,11 @@
-var Discord = require('discord.io');
+//var Discord = require('discord.io');
+
 var logger = require('winston');
 var config = require('./config.json');
 
-//const DiscordJS = require('discord.js');
+const DiscordJS = require('discord.js');
 //const commando = require('discord.js-commando');
+const client = new Discord.Client();
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -23,9 +25,15 @@ con.connect(function(err) {
 
 
 // Initialize Discord Bot
-var bot = new Discord.Client({
-   token: config.token,
-   autorun: true
+//var bot = new Discord.Client({
+//   token: config.token,
+//   autorun: true
+//});
+
+client.login(config.token);
+
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
 //Stuff for !Darius
