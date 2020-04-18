@@ -50,8 +50,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     var cmd = args[0];
     args = args.splice(1);
   }
-
-  bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+userID+" "+message+"\`\`\`"});
+  if(user !== "AtlassianDev") {
+    bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+userID+" "+message+"\`\`\`"});
+  }
   if(cmd === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
