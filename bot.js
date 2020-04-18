@@ -51,7 +51,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     args = args.splice(1);
   }
   if(user !== "AtlassianDev") {
-    bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+userID+" "+message+"\`\`\`"});
+    bot.sendMessage({to: channelID,message: "\`\`\`"+user+" "+userID+"\`\`\`"});
   }
   if(cmd === "ping") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
