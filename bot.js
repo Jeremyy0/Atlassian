@@ -9,7 +9,7 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  var prefix = '!';
+  var prefix = '.';
   if (msg.content.substring(0, 1) == prefix) {
     var args = msg.content.substring(1).split(' ');
     var cmd = args[0];
