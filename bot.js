@@ -58,7 +58,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
   if(cmd === "testing") {
     // Calculates ping between sending a message and editing it, giving a nice round-trip latency.
     // The second ping is an average latency between the bot and the websocket server (one-way, not round-trip)
-    bot.sendMessage({to: channelID,message: $user " " + userID + " " + message});
+    bot.sendMessage({to: channelID,message: " " + user " " + userID + " " + message});
     if(message.member.hasPermission("ADMINISTRATOR")) {
       bot.sendMessage({to: channelID,message: 'Testing!'});
     }
