@@ -9,17 +9,16 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.substring(0, 1) == prefix) {
-    var args = msg.substring(1).split(' ');
+  var prefix = '!';
+  if (msg.content.substring(0, 1) == prefix) {
+    var args = msg.content.substring(1).split(' ');
     var cmd = args[0];
     args = args.splice(1);
   }
-
-  var prefix = '!';
-  if (msg.content === prefix+'ping') {
+  if (cmd === 'ping') {
     msg.reply('Pong!');
   }
-  if (msg.content === prefix+'test') {
+  if (cmd === 'test') {
     if(msg.member.hasPermission("ADMINISTRATOR")) {
       msg.channel.send('Success!');
 
@@ -27,7 +26,7 @@ client.on('message', msg => {
   }
 
   //Search resource tile locations
-  if(msg === prefix+'find' || msg === prefix+'whereis') {
+  if(cmd === 'find' || cmd === prefix+'whereis') {
     var found = false;
     con.query("select tiles from (SELECT resource, GROUP_CONCAT(distinct tile separator ', ') as tiles from locations group by resource) as T where resource=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
       if (err) msg.channel.send("\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`");;
