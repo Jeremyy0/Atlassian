@@ -32,7 +32,7 @@ client.on('message', msg => {
     args = args.splice(1);
 
     if (cmd === 'ping' && channelEnabled(msg.channel.id)) {
-      msg.reply('Pong!');
+      msg.reply('Ponggggg!');
     }
     if (cmd === 'test') {
       if(msg.member.hasPermission("ADMINISTRATOR")) {
