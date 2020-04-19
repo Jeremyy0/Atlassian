@@ -31,7 +31,7 @@ client.on('message', msg => {
     var cmd = args[0];
     args = args.splice(1);
 
-    if (cmd === 'ping' && channelEnabled(msg.channel.id)) {
+    if (cmd === 'ping') && (channelEnabled(msg.channel.id)) {
       msg.reply('Pong!');
     }
     if (cmd === 'test') {
