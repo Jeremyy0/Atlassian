@@ -31,12 +31,12 @@ client.on('message', msg => {
     var cmd = args[0];
     args = args.splice(1);
 
-    if (cmd === 'ping' && channelEnabled(message.channel.id)) {
+    if (cmd === 'ping' && channelEnabled(msg.channel.id)) {
       msg.reply('Pong!');
     }
     if (cmd === 'test') {
       if(msg.member.hasPermission("ADMINISTRATOR")) {
-        msg.channel.send('Success!');
+        msg.channel.send('Success!);
       }
     }
 
