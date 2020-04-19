@@ -37,6 +37,7 @@ client.on('message', msg => {
     if (cmd === 'test') {
       if(msg.member.hasPermission("ADMINISTRATOR")) {
         msg.channel.send('Success!');
+        msg.channel.send(msg.channel.id);
       }
     }
 
