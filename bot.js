@@ -22,17 +22,6 @@ function channelEnabled(channel) {
         return false;
       }
   });
-
-
-    if (err) channel.send("\`\`\`Something went wrong with command.\`\`\`");;
-    if (result[0]) {
-      channel.send("true");
-      return True;
-    } else {
-      channel.send("false");
-      return False;
-    }
-  });
 }
 
 
