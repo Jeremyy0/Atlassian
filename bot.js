@@ -34,13 +34,14 @@ client.on('message', msg => {
     var args = msg.content.substring(1).split(' ');
     var cmd = args[0];
     args = args.splice(1);
+    var responsive;
 
     con.query("select channel from channelEnabled where channel =\""+msg.channel.id+"\"", function (err, result, fields) {
       if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
         if (result[0]) {
-          let responsive =  '1';
+          responsive =  '1';
         } else {
-          let responsive = '0';
+          responsive = '0';
         }
     });
 
@@ -60,7 +61,7 @@ client.on('message', msg => {
       msg.channel.send("Atlassian Bot Commands\n(Currently not working.) To Remove: "+prefix+"del <tile> <resource1>,<resource2>\n(Currently not working.) To Add: "+prefix+"add <tile> <resource2>,<resource1>\n\nTo query:\n"+prefix+"find <resource>\n"+prefix+"whatson <tile>\n"+prefix+"animals <tile>\n"+prefix+"islands <tile>"+prefix+"map <tile>\n"+prefix+"ping - original test command..... Left as a reminder to never forget where I began with the bot.");
     }
     //Search resource tile locations
-    if(cmd === 'find' || cmd === prefix+'whereis') {
+    if(cmd === 'find' || cmd === 'whereis') {
       var found = false;
       con.query("select tiles from (SELECT resource, GROUP_CONCAT(distinct tile separator ', ') as tiles from locations group by resource) as T where resource=\""+[args[0].toLowerCase()]+"\"", function (err, result, fields) {
         if (err) msg.channel.send("\`\`\`Ahoy! Thar\'s an error with yer command fix yer syntax and try again.\`\`\`");;
