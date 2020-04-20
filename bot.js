@@ -34,7 +34,17 @@ client.on('message', msg => {
     var args = msg.content.substring(1).split(' ');
     var cmd = args[0];
     args = args.splice(1);
-    channelEnabled(msg.channel);
+
+    con.query("select channel from channelEnabled where channel =\""+msg.channel.id+"\"", function (err, result, fields) {
+      if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
+        if (result[0]) {
+          let responsive =  true;
+        } else {
+          let responsive = false;
+        }
+    });
+
+
     if (cmd === 'ping' && responsive) {
       msg.reply('Ponggggg!');
     }
