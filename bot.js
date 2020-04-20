@@ -14,7 +14,7 @@ client.on('ready', () => {
 
 function channelEnabled(channel) {
   channel.send(channel.id);
-  con.query("select channel from channelEnabled where tile =\""+channel.id+"\"", function (err, result, fields) {
+  con.query("select channel from channelEnabled where channel =\""+channel.id+"\"", function (err, result, fields) {
     if (err) channel.send("\`\`\`Something went wrong with command.\`\`\`");;
     if (result[0]) {
       channel.send("true");
