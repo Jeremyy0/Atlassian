@@ -39,7 +39,8 @@ client.on('message', msg => {
     con.query("select channel from channelEnabled where channel =\""+msg.channel.id+"\"", function (err, result, fields) {
       if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
         if (result[0]) {
-          responsive =  true;
+          msg.channel.send('yep');
+          responsive = true;
         }
     });
 
