@@ -13,14 +13,11 @@ client.on('ready', () => {
 });
 
 function channelEnabled(channel) {
-  channel.send(channel.id);
   con.query("select channel from channelEnabled where channel =\""+channel.id+"\"", function (err, result, fields) {
     if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
       if (result[0]) {
-        channel.send('yep');
         return 1;
       } else {
-        channel.send('nope');
         return 0;
       }
   });
@@ -38,7 +35,7 @@ client.on('message', msg => {
     var cmd = args[0];
     args = args.splice(1);
 
-    if (cmd === 'ping' && channelEnabled(msg.channel)) {
+    if (cmd === 'ping' && channelEnabled(msg.channel) === 1) {
       msg.reply('Ponggggg!');
     }
     if (cmd === 'test') {
