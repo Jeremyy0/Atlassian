@@ -16,9 +16,9 @@ function channelEnabled(channel) {
   con.query("select channel from channelEnabled where channel =\""+channel.id+"\"", function (err, result, fields) {
     if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
       if (result[0]) {
-        return true;
+        let responsive =  true;
       } else {
-        return false;
+        let responsive = false;
       }
   });
 }
@@ -34,7 +34,7 @@ client.on('message', msg => {
     var args = msg.content.substring(1).split(' ');
     var cmd = args[0];
     args = args.splice(1);
-    let responsive = channelEnabled(msg.channel);
+    channelEnabled(msg.channel);
     if (cmd === 'ping' && responsive) {
       msg.reply('Ponggggg!');
     }
