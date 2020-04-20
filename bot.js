@@ -44,7 +44,7 @@ client.on('message', msg => {
     });
 
 
-    if (cmd === 'ping' && (responsive)) {
+    if (cmd === 'ping' && !(responsive)) {
       msg.reply('Ponggggg!');
     }
     if (cmd === 'test') {
