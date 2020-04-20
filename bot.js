@@ -35,7 +35,7 @@ client.on('message', msg => {
     var cmd = args[0];
     args = args.splice(1);
     let responsive = channelEnabled(msg.channel);
-    if (cmd === 'ping' && responsive {
+    if (cmd === 'ping' && responsive) {
       msg.reply('Ponggggg!');
     }
     if (cmd === 'test') {
