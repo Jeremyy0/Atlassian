@@ -16,7 +16,13 @@ function channelEnabled(channel) {
   channel.send(channel.id);
   con.query("select channel from channelEnabled where tile =\""+channel.id+"\"", function (err, result, fields) {
     if (err) channel.send("\`\`\`Something went wrong with command.\`\`\`");;
-    if (result[0]) { return true;  } else { return false; }
+    if (result[0]) {
+      channel.send("true");
+      return True;
+    } else {
+      channel.send("false");
+      return False;
+    }
   });
 }
 
