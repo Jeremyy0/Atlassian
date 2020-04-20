@@ -16,9 +16,9 @@ function channelEnabled(channel) {
   con.query("select channel from channelEnabled where channel =\""+channel.id+"\"", function (err, result, fields) {
     if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
       if (result[0]) {
-        return 1;
+        return true;
       } else {
-        return 0;
+        return false;
       }
   });
 }
