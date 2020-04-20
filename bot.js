@@ -12,9 +12,10 @@ client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-function channelEnabled(channelID) {
-  con.query("select channel from channelEnabled where tile =\""+channelID+"\"", function (err, result, fields) {
-    if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
+function channelEnabled(channel) {
+  channel.send(channel.id);
+  con.query("select channel from channelEnabled where tile =\""+channel.id+"\"", function (err, result, fields) {
+    if (err) channel.send("\`\`\`Something went wrong with command.\`\`\`");;
     if (result[0]) { return true;  } else { return false; }
   });
 }
@@ -31,7 +32,7 @@ client.on('message', msg => {
     var cmd = args[0];
     args = args.splice(1);
 
-    if (cmd === 'ping' && channelEnabled(msg.channel.id)) {
+    if (cmd === 'ping' && channelEnabled(msg.channel)) {
       msg.reply('Ponggggg!');
     }
     if (cmd === 'test') {
