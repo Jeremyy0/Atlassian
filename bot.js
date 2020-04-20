@@ -18,10 +18,10 @@ function channelEnabled(channel) {
     if (err) msg.channel.send("\`\`\`Something went wrong with command.\`\`\`");;
       if (result[0]) {
         channel.send('yep');
-        return true;
+        return 1;
       } else {
         channel.send('nope');
-        return false;
+        return 0;
       }
   });
 }
